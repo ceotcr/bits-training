@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #carousel-container {
+            --slide-by: 0;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(calc(var(--slide-by) * -100%));
+        }
+    </style>
+</head>
+
+<body class="w-full h-screen flex flex-col gap-8 items-center justify-center">
+    <div
+        class="flex items-center justify-center bg-white max-h-[80vh] h-full max-w-[1440px] w-[96%] relative overflow-hidden shadow-2xl rounded-2xl">
+        <div id="carousel-container" class="flex justify-start max-h-full h-full w-full">
+            <img src="https://picsum.photos/1024/512?grayscale" loading="eager" alt=""
+                class="w-full h-full max-h-full min-w-full max-w-full overflow-x-hidden object-cover">
+            <img src="https://picsum.photos/1080/512?grayscale" loading="eager" alt=""
+                class="w-full h-full max-h-full min-w-full max-w-full overflow-x-hidden object-cover">
+            <img src="https://picsum.photos/1024/540?grayscale" loading="eager" alt=""
+                class="w-full h-full max-h-full min-w-full max-w-full overflow-x-hidden object-cover">
+            <img src="https://picsum.photos/980/512?grayscale" loading="eager" alt=""
+                class="w-full h-full max-h-full min-w-full max-w-full overflow-x-hidden object-cover">
+            <img src="https://picsum.photos/1024/556?grayscale" loading="eager" alt=""
+                class="w-full h-full max-h-full min-w-full max-w-full overflow-x-hidden object-cover">
+        </div>
+        <!-- controls -->
+        <button id="prev"
+            class="absolute cursor-pointer hover:bg-white -left-6 top-1/2 transform -translate-y-1/2 bg-slate-300 transition-colors p-8 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button id="next"
+            class="absolute cursor-pointer hover:bg-white -right-6 top-1/2 transform -translate-y-1/2 bg-slate-300 transition-colors p-8 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+        <div id="image-count" class="absolute bottom-4 right-4 text-white p-2 rounded-tl-lg text-xl font-bold">
+            1/5
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
