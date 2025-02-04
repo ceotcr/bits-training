@@ -12,24 +12,20 @@ lis.forEach(li => {
 const ul = document.querySelector('.list-group');
 ul.addEventListener('dragover', e => {
     e.preventDefault();
-    const afterElement = getDragAfterElement(ul, e.clientY);
     const dragging = document.querySelector('.dragging');
-    if (afterElement == null) {
-        ul.appendChild(dragging);
-    } else {
-        ul.insertBefore(dragging, afterElement);
-    }
-})
+    const others = [...document.querySelectorAll('.list-group-item:not(.dragging)')];
 
-function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.list-group-item:not(.dragging)')];
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
+    let nextElem = null;
+
+    for (let other of others) {
+        const box = other.getBoundingClientRect();
+        const offset = e.clientY - box.top - box.height / 2;
+
+        if (offset < 0) {
+            nextElem = other;
+            break;
         }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
+    }
+
+    ul.insertBefore(dragging, nextElem);
+});
