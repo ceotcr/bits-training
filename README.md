@@ -10,3 +10,5 @@
 - Assignment 3
   - Axios Basics - Traversy Media - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment3/AxiosVideoFollow)
   - Todo app using JSONPlaceholder API - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment3/ToDoWithAPI)
+- Assignment 4
+  - Tasks on Array- Map, Filter, Reduce & Memory Usage - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Assignment4)
