@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <header class="sticky top-0 z-50 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
+        <div class="w-full mx-auto max-w-[1440px] p-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-x-2">
+                    <h1 class="text-2xl font-semibold text-gray-900">Opulenze</h1>
+                </a>
+                <nav class="hidden lg:flex items-center gap-x-6 mx-auto">
+                    <a href="../" class="text-sm font-medium text-gray-900">Home</a>
+                    <a href="../products/" class="text-sm font-medium text-gray-900">Products</a>
+                </nav>
+                <div class="flex items-center gap-x-6">
+                    <a href="#" class="flex items-center gap-x-6 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-900 text-2xl cursor-pointer">shopping_bag</span>
+                        <span
+                            class="absolute -top-3 -right-3 w-6 h-6 inline-flex items-center justify-center text-xs font-semibold leading-none text-black bg-green-400 rounded-full"
+                            id="cart-badge">9+</span>
+                    </a>
+                    <button
+                        class="md:hidden cursor-pointer flex items-center justify-center w-10 h-10 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        aria-label="Toggle Menu">
+                        <span class=" material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="p-6 w-full">
+        <div class="w-full mx-auto max-w-[1440px] items-center gap-4 min-h-screen">
+            <h2 class="text-2xl font-semibold text-gray-900">Cart</h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+            </div>
+        </div>
+    </section>
+    <footer class="bg-black text-white">
+        <div class="w-full mx-auto max-w-[1440px] p-6">
+            <nav>
+                <ul class="flex items-center justify-center gap-x-6">
+                    <li><a href="../" class="text-lg font-medium">Home</a></li>
+                    <li><a href="..products/" class="text-lg font-medium">Products</a></li>
+                </ul>
+            </nav>
+            <div class="mt-4 text-center">
+                <p class="text-sm font-medium">© <span id="footer-year">2025</span> Opulenze. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../scripts/common.js" type="module"></script>
+</body>
+
+</html>
