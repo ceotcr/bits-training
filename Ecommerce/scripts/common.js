@@ -17,3 +17,8 @@ document.getElementById("back-button")?.addEventListener('click', () => {
 document.getElementById("back-to-top-button")?.addEventListener('click', () => {
     window.scrollTo(0, 0);
 });
+
+
+document.getElementById("mob-nav-toggler")?.addEventListener('click', () => {
+    document.getElementById("mob-nav").classList.toggle("active");
+})
