@@ -36,7 +36,7 @@ export const getProductCard = (product) => {
     button.appendChild(span);
     button.appendChild(icon);
     button.addEventListener('click', (e) => {
-        const buttonElement = e.target.closest('button.add-to-cart'); // Ensure the button is targeted
+        const buttonElement = e.target.closest('button.add-to-cart');
         if (!buttonElement) return;
 
         const productData = buttonElement.dataset.product;

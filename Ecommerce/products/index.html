@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce</title>
+    <title>
+        Products | Opulenze
+    </title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="../styles/main.css">
@@ -20,9 +22,13 @@
                 <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
                     <a href="../" class="text-sm font-medium text-gray-900">Home</a>
                     <a href="#" class="text-sm font-medium text-gray-900 underline underline-offset-4">Products</a>
+                    <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
+
+                    <a href="../login/" id="login" class="text-sm cursor-pointer font-medium text-gray-900">Signin</a>
+
                 </nav>
                 <div class="flex items-center gap-x-6">
-                    <a href="./cart/" class="flex items-center gap-x-6 relative">
+                    <a href="../cart/" class="flex items-center gap-x-6 relative">
                         <span
                             class="material-symbols-outlined text-gray-900 text-2xl cursor-pointer">shopping_bag</span>
                         <span
@@ -89,6 +95,9 @@
             </div>
         </div>
     </footer>
+    <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
+        Snackbar
+    </div>
     <script src="../scripts/productsPage.js" type="module"></script>
     <script src="../scripts/common.js" type="module"></script>
 </body>

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce</title>
+    <title>
+        Opulenze - Indulge in Elegance
+    </title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="styles/main.css">
@@ -20,6 +22,10 @@
                 <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
                     <a href="#" class="text-sm font-medium text-gray-900 underline underline-offset-4">Home</a>
                     <a href="./products/" class="text-sm font-medium text-gray-900">Products</a>
+                    <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
+
+                    <a href="./login/" id="login" class="text-sm cursor-pointer font-medium text-gray-900">Signin</a>
+
                 </nav>
                 <div class="flex items-center gap-x-6">
                     <a href="./cart/" class="flex items-center gap-x-6 relative">
@@ -49,14 +55,6 @@
         <div
             class="w-full mx-auto max-w-[1440px] grid grid-cols-1 gap-y-16 items-center md:grid-cols-2 md:gap-x-8 lg:gap-x-16">
             <div class="">
-                <div class="hidden sm:mb-8 sm:flex sm:justify-center md:justify-start">
-                    <div
-                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        Celebrate love with Opulenze. <a href="#" class="font-semibold text-indigo-600"><span
-                                class="absolute inset-0" aria-hidden="true"></span>Read more <span
-                                aria-hidden="true">&rarr;</span></a>
-                    </div>
-                </div>
                 <div class="text-left max-md:text-center">
                     <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
                         <i class="text-[#281C02]">Opulenze</i> <br>
@@ -67,11 +65,9 @@
                         collection
                         of exquisite products, crafted for those who appreciate the finest things in life.</p>
                     <div class="mt-10 flex items-center md:justify-start justify-center gap-x-6">
-                        <a href="#"
+                        <a href="./products/"
                             class="rounded-md bg-[#281C02] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:opacity-90 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Explore
                             Products</a>
-                        <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span
-                                aria-hidden="true">→</span></a>
                     </div>
                 </div>
             </div>
@@ -144,6 +140,9 @@
             </div>
         </div>
     </footer>
+    <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
+        Snackbar
+    </div>
     <script src="./scripts/common.js" type="module"></script>
     <script src="./scripts/home.js" type="module"></script>
 </body>
