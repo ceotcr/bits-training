@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Products | Opulenze
+        Admin | Opulenze
     </title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="sticky top-0 z-50 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
+    <header class="sticky top-0 z-[60] bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
         <div class="w-full mx-auto max-w-[1440px] p-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="flex items-center gap-x-2">
@@ -21,12 +21,11 @@
                 </a>
                 <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
                     <a href="../" class="text-sm font-medium text-gray-900">Home</a>
-                    <a href="#" class="text-sm font-medium text-gray-900 underline underline-offset-4">Products</a>
-                    <a href="../admin/" id="admin" class="text-sm font-medium text-gray-900">Admin</a>
+                    <a href="../products/" class="text-sm font-medium text-gray-900">Products</a>
+                    <a href="#" id="admin"
+                        class="text-sm font-medium text-gray-900 underline underline-offset-4">Admin</a>
                     <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
-
                     <a href="../login/" id="login" class="text-sm cursor-pointer font-medium text-gray-900">Signin</a>
-
                 </nav>
                 <div class="flex items-center gap-x-6">
                     <a href="../cart/" class="flex items-center gap-x-6 relative">
@@ -47,14 +46,8 @@
         </div>
     </header>
     <section class="p-6 w-full">
-        <div class="w-full mx-auto max-w-[1440px] items-center gap-4 min-h-screen">
-            <h2 class="text-2xl text-center font-semibold text-gray-900 w-fit mx-auto">
-                <i class="text-[#DA9100]">
-                    Opulenze
-                </i><br>
-                Shop faster, Shop Smarter
-            </h2>
-
+        <div class="w-full mx-auto max-w-[1440px] items-center gap-4 min-h-screen gap-4 h-fit flex flex-col">
+            <h2 class="text-2xl font-semibold text-gray-900 mr-auto">Admin</h2>
             <div
                 class="flex sticky top-20 z-50 mt-4 w-full items-end gap-4 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg p-4 rounded-md">
                 <select name="category-filter" id="category-filter"
@@ -66,14 +59,15 @@
                     <option value="asc">Low to High</option>
                     <option value="desc">High to Low</option>
                 </select>
+                <button id="add-product"
+                    class="p-2 bg-white text-black cursor-pointer z-auto rounded-md material-symbols-outlined ml-auto">add</button>
             </div>
-
             <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
                 id="products-container">
                 <div class="col-span-full gap-4 flex flex-col items-center justify-center pt-20">
                     <img src="../assets/loading.gif"
                         class="w-full max-w-[240px] rounded-full mix-blend-multiply h-full mx-auto" alt="Loading">
-                    <p class="text-3xl">Curating Best Products For You...</p>
+                    <p class="text-3xl">Getting the products...</p>
                 </div>
 
             </div>
@@ -97,11 +91,50 @@
             </div>
         </div>
     </footer>
+    <div class="fixed top-0 left-0 h-screen pt-20 items-center flex flex-col justify-center w-screen bg-[rgba(255,255,255,0.6)] backdrop-blur-lg z-50 hidden"
+        id="modal">
+        <div
+            class="w-[96%] max-w-[512px] overflow-y-auto shadow-2xl rounded-md bg-white h-[80vh] flex items-center justify-center">
+            <form id="add-product-form" class="w-full h-full p-4 flex flex-col gap-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-semibold text-gray-900 form-heading">Add Product</h2>
+                    <button type="button" id="close-modal"
+                        class="p-2 cursor-pointer bg-red-500 text-white rounded-md material-symbols-outlined ml-2">close</button>
+                </div>
+                <div class="">
+                    <label for="title" class="text-sm font-medium text-gray-900">Title</label>
+                    <input type="text" name="title" id="title" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div class="">
+                    <label for="price" class="text-sm font-medium text-gray-900">Price</label>
+                    <input type="text" name="price" id="price" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div class="">
+                    <label for="description" class="text-sm font-medium text-gray-900">Description</label>
+                    <textarea name="description" id="description"
+                        class="w-full p-2 border border-gray-300 rounded-md"></textarea>
+                </div>
+                <div class="">
+                    <label for="image" class="text-sm font-medium text-gray-900">Image</label>
+                    <input type="url" name="image" id="image" class="w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div class="">
+                    <label for="form-category" class="text-sm font-medium text-gray-900">Category</label>
+                    <select name="category" id="form-category" class="w-full p-2 border border-gray-300 rounded-md">
+                    </select>
+                </div>
+                <div class="flex items-center w-full justify-between">
+                    <button type="submit"
+                        class="p-2 bg-black text-white w-full rounded-md cursor-pointer">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
         Snackbar
     </div>
-    <script src="../scripts/productsPage.js" type="module"></script>
     <script src="../scripts/common.js" type="module"></script>
+    <script src="../scripts/admin.js" type="module"></script>
 </body>
 
 </html>

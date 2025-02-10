@@ -3,14 +3,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const badge = document.getElementById('cart-badge');
     badge.innerText = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')).length : 0;
-    if (JSON.parse(localStorage.getItem("user") || "{}").id) {
-        document.getElementById("logout").style.display = "block";
-        document.getElementById("login").style.display = "none";
+    if (localStorage.getItem('user')) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('logout').style.display = 'block';
+        document.getElementById('admin').style.display = 'flex'
+    } else {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('logout').style.display = 'none';
+        document.getElementById('admin').style.display = 'none'
     }
-    else {
-        document.getElementById("login").style.display = "block";
-        document.getElementById("logout").style.display = "none";
-    }
+
     document.getElementById("logout").addEventListener('click', () => {
         localStorage.removeItem('user');
         localStorage.removeItem('cart');

@@ -28,3 +28,13 @@ export const getProduct = async (id) => {
     }
     return await res.json();
 }
+
+export const deleteProduct = async (id) => {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+        method: "DELETE"
+    });
+    if (response.ok) {
+        return true;
+    }
+    return false;
+}

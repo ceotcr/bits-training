@@ -1,3 +1,4 @@
+import { deleteProduct } from './apis.js';
 import { cart } from './cart.js';
 export const getProductCard = (product) => {
     const productItem = document.createElement('div');
@@ -11,7 +12,7 @@ export const getProductCard = (product) => {
     link.appendChild(image);
     productItem.appendChild(link);
     const details = document.createElement('div');
-    details.className = 'mt-4 flex gap-4 justify-between';
+    details.className = 'mt-4 flex gap-4 justify-between details';
     const productDetails = document.createElement('a');
     productDetails.href = `/Ecommerce/product/?id=${product.id}`;
     productDetails.className = 'flex flex-col justify-start text-left items-start w-fit max-w-6/10';
@@ -49,7 +50,10 @@ export const getProductCard = (product) => {
             console.error("Invalid product data:", productData);
         }
     });
-    details.appendChild(button);
+    // append only if page is not admin
+    if (!window.location.pathname.includes('admin')) {
+        details.appendChild(button);
+    }
     productItem.appendChild(details);
     return productItem;
 }
