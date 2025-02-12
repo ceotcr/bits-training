@@ -1,0 +1,15 @@
+{
+  "name": "bits-training",
+  "version": "1.0.0",
+  "description": "- Assignment 1\r   - Todo - Edit in place, Confirm delete, Delete all - [View task](https://github.com/ceotcr/bits-training/tree/main/Todo)\r   - JS Closures - Reset Counter - [View task](https://github.com/ceotcr/bits-training/tree/main/Mini-tasks/closures)\r - Assignment 2\r   - Carousel - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment2/Caraousel)\r   - Drag & Drop List Items - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment2/DND-List-Items)\r   - OOP - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment2/OOPs)\r - Assignment 3\r   - Axios Basics - Traversy Media - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment3/AxiosVideoFollow)\r   - Todo app using JSONPlaceholder API - [View task](https://github.com/ceotcr/bits-training/tree/main/Assignment3/ToDoWithAPI)\r - Assignment 4\r   - Tasks on Array- Map, Filter, Reduce & Memory Usage - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Assignment4)\r - Assignment 5 - Project\r   - Ecommerce Project - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Ecommerce)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
