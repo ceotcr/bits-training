@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center flex-col gap-8 relative p-8">
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+        <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        </div>
+    </div>
+    <!--Get User Name -->
+    <div class="w-full flex flex-col items-center gap-8" id="start-cont">
+        <h1 class="text-4xl mx-auto text-center max-w-2xl">Welcome to Quizzy</h1>
+        <input autofocus type="text" class="outline-1 outline-white text-white text-xl px-4 py-2 rounded" id="name"
+            placeholder="Enter your name" required autocomplete="name" />
+        <button class="bg-blue-500 text-white text-xl cursor-pointer py-2 px-4 rounded" id="start">Start</button>
+    </div>
+
+    <div class="w-full flex flex-col items-center gap-8 hidden" id="quiz-cont">
+        <h1 class="text-4xl mx-auto text-center max-w-2xl" id="question">
+            What is the capital of France?
+        </h1>
+        <div class="grid grid-cols-2 gap-4 w-full max-w-xl">
+            <button
+                class="border-blue-500 bg-transparent border hover:bg-blue-700 text-white text-xl cursor-pointer py-2 px-4 rounded option transition-colors">Paris</button>
+            <button
+                class="border-blue-500 bg-transparent border hover:bg-blue-700 text-white text-xl cursor-pointer py-2 px-4 rounded option transition-colors">London</button>
+            <button
+                class="border-blue-500 bg-transparent border hover:bg-blue-700 text-white text-xl cursor-pointer py-2 px-4 rounded option transition-colors">Berlin</button>
+            <button
+                class="border-blue-500 bg-transparent border hover:bg-blue-700 text-white text-xl cursor-pointer py-2 px-4 rounded option transition-colors">Madrid</button>
+        </div>
+        <div id="progress" class="w-full max-w-2xl h-2 rounded-full bg-white"></div>
+        <div class="flex gap-4">
+            <button class="bg-blue-500 text-white text-xl cursor-pointer py-2 px-4 rounded" id="next">Next</button>
+        </div>
+
+    </div>
+
+    <div class="w-full flex flex-col items-center gap-8 hidden" id="result-cont">
+        <h1 class="text-4xl mx-auto text-center max-w-2xl">Quiz Completed</h1>
+        <p class="text-xl" id="result">You Scored 100%</p>
+        <button class="bg-blue-500 text-white text-xl cursor-pointer py-2 px-4 rounded" id="restart">Restart</button>
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-3xl right-0" aria-hidden="true">
+        <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        </div>
+    </div>
+    <script src="./scripts/main.js" type="module"></script>
+</body>
+
+</html>
