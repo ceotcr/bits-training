@@ -14,3 +14,9 @@
   - Tasks on Array- Map, Filter, Reduce & Memory Usage - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Assignment4)
 - Assignment 5 - Project
   - Ecommerce Project - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Ecommerce)
+- Assignment 6
+  - OOP with TS - [View tasks](https://github.com/ceotcr/bits-training/tree/main/Assignment6)
+- Assignment 7
+  - Quiz App with TS
+  - Employee management system with TS
+  - [View Here](https://github.com/ceotcr/bits-training/tree/main/Assignment7)
