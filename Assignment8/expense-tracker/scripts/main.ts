@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     renderExpenses()
     loadCards()
+    const addExpenseButton = document.getElementById("add-expense") as HTMLButtonElement
+    addExpenseButton.addEventListener("click", addHandler)
 })
 
 
@@ -70,16 +72,22 @@ const renderExpenses = () => {
     const date = dateSelect.value as "today" | "month" | "year" | "all"
     const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date)
     const historyContainer = document.getElementById("history") as HTMLDivElement
-    filteredExpenses.forEach(expense => {
-        historyContainer.innerHTML += getExpenseCard(expense)
-    })
 
     if (filteredExpenses.length === 0) {
+        historyContainer.innerHTML = `
+
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Start adding expenses to see them here</p>
+        `
         renderSubscriptions([])
         return
     }
 
     historyContainer.innerHTML = ""
+    filteredExpenses.forEach(expense => {
+        historyContainer.innerHTML += getExpenseCard(expense)
+    })
+
 
     const editButtons = document.querySelectorAll(".edit-expense")
 
@@ -167,12 +175,57 @@ const getOptions = () => {
 }
 
 const renderSubscriptions = (expenses: IExpense[]) => {
+    const subscriptionsContainer = document.getElementById("subscriptions") as HTMLDivElement
     if (expenses.length === 0) {
+        subscriptionsContainer.innerHTML = `
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Try recurring expenses</p>
+        `
         return
     }
-    const subscriptionsContainer = document.getElementById("subscriptions") as HTMLDivElement
     subscriptionsContainer.innerHTML = ""
     expenses.forEach(expense => {
         subscriptionsContainer.innerHTML += getSubscriptionCard(expense)
     })
+}
+
+
+const addHandler = () => {
+    getOptions()
+    const modal = document.getElementById("modal") as HTMLDivElement
+    const modalClose = document.getElementById("modal-close") as HTMLDivElement
+    const form = modal.querySelector("#form") as HTMLFormElement;
+
+    (modal.querySelector("h2") as HTMLHeadingElement).innerText = "Add Expense"
+    modal.classList.remove("hidden")
+
+    modalClose.onclick = () => modal.classList.add("hidden")
+
+    const nameInput = document.getElementById("name") as HTMLInputElement
+    const descriptionInput = document.getElementById("description") as HTMLInputElement
+    const amountInput = document.getElementById("amount") as HTMLInputElement
+    const dateInput = document.getElementById("date") as HTMLInputElement
+    const categorySelect = document.getElementById("category") as HTMLSelectElement
+    const toInput = document.getElementById("to") as HTMLInputElement
+    const recurringInput = document.getElementById("recurring") as HTMLInputElement
+
+    form.onsubmit = (event) => {
+        event.preventDefault()
+
+        expenseTracker.addExpense({
+            id: expenseTracker.getId(),
+            name: nameInput.value,
+            description: descriptionInput.value,
+            amount: parseInt(amountInput.value),
+            date: dateInput.value,
+            category: categories.getCategories().find(category => category.name === categorySelect.value) as ICategory,
+            to: toInput.value,
+            recurring: recurringInput.checked
+        })
+
+        modal.classList.add("hidden")
+        form.reset()
+        loadCards()
+        renderExpenses()
+    }
 }

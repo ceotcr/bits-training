@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     renderExpenses();
     loadCards();
+    const addExpenseButton = document.getElementById("add-expense");
+    addExpenseButton.addEventListener("click", addHandler);
 });
 const loadCards = () => {
     const budgetInput = document.getElementById("budget");
@@ -60,14 +62,19 @@ const renderExpenses = () => {
     const date = dateSelect.value;
     const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date);
     const historyContainer = document.getElementById("history");
-    filteredExpenses.forEach(expense => {
-        historyContainer.innerHTML += getExpenseCard(expense);
-    });
     if (filteredExpenses.length === 0) {
+        historyContainer.innerHTML = `
+
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Start adding expenses to see them here</p>
+        `;
         renderSubscriptions([]);
         return;
     }
     historyContainer.innerHTML = "";
+    filteredExpenses.forEach(expense => {
+        historyContainer.innerHTML += getExpenseCard(expense);
+    });
     const editButtons = document.querySelectorAll(".edit-expense");
     editButtons.forEach(button => {
         button.addEventListener("click", (e) => {
@@ -136,12 +143,49 @@ const getOptions = () => {
     });
 };
 const renderSubscriptions = (expenses) => {
+    const subscriptionsContainer = document.getElementById("subscriptions");
     if (expenses.length === 0) {
+        subscriptionsContainer.innerHTML = `
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Try recurring expenses</p>
+        `;
         return;
     }
-    const subscriptionsContainer = document.getElementById("subscriptions");
     subscriptionsContainer.innerHTML = "";
     expenses.forEach(expense => {
         subscriptionsContainer.innerHTML += getSubscriptionCard(expense);
     });
+};
+const addHandler = () => {
+    getOptions();
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modal-close");
+    const form = modal.querySelector("#form");
+    modal.querySelector("h2").innerText = "Add Expense";
+    modal.classList.remove("hidden");
+    modalClose.onclick = () => modal.classList.add("hidden");
+    const nameInput = document.getElementById("name");
+    const descriptionInput = document.getElementById("description");
+    const amountInput = document.getElementById("amount");
+    const dateInput = document.getElementById("date");
+    const categorySelect = document.getElementById("category");
+    const toInput = document.getElementById("to");
+    const recurringInput = document.getElementById("recurring");
+    form.onsubmit = (event) => {
+        event.preventDefault();
+        expenseTracker.addExpense({
+            id: expenseTracker.getId(),
+            name: nameInput.value,
+            description: descriptionInput.value,
+            amount: parseInt(amountInput.value),
+            date: dateInput.value,
+            category: categories.getCategories().find(category => category.name === categorySelect.value),
+            to: toInput.value,
+            recurring: recurringInput.checked
+        });
+        modal.classList.add("hidden");
+        form.reset();
+        loadCards();
+        renderExpenses();
+    };
 };
