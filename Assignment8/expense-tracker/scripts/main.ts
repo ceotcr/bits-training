@@ -199,7 +199,7 @@ const addHandler = () => {
 
     (modal.querySelector("h2") as HTMLHeadingElement).innerText = "Add Expense"
     modal.classList.remove("hidden")
-
+    form.reset()
     modalClose.onclick = () => modal.classList.add("hidden")
 
     const nameInput = document.getElementById("name") as HTMLInputElement

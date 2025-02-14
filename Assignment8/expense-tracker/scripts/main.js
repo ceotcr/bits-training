@@ -164,6 +164,7 @@ const addHandler = () => {
     const form = modal.querySelector("#form");
     modal.querySelector("h2").innerText = "Add Expense";
     modal.classList.remove("hidden");
+    form.reset();
     modalClose.onclick = () => modal.classList.add("hidden");
     const nameInput = document.getElementById("name");
     const descriptionInput = document.getElementById("description");
