@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #4B5563;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #1F2937;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="w-full bg-black text-white flex">
+    <aside class="w-16 bg-[#151515] h-screen overflow-y-auto flex flex-col justify-between py-4 items-center">
+        <span class="material-icons !text-[28px] text-green-500">savings</span>
+        <nav>
+            <ul>
+                <li>
+                    <button
+                        class="material-icons cursor-pointer text-slate-400 hover:text-white transition-colors !text-[28px]">space_dashboard</button>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="w-full flex flex-col gap-4 p-4 h-screen overflow-y-auto">
+        <section class="w-full grid grid-cols-1 lg:grid-cols-4 gap-4 sm:grid-cols-2">
+            <div class="w-full flex flex-col gap-4">
+                <div class="flex gap-2 justify-between items-center">
+                    <h2 class="text-2xl font-extralight text-left">
+                        Monthly Budget
+                    </h2>
+                    <button class="material-icons text-green-500 cursor-pointer" id="edit-budget">edit</button>
+                </div>
+                <input readonly aria-label="budget" class="text-4xl focus:outline-none  focus:border-none"
+                    id="budget" />
+                <p class="text-sm" id="graded-budget">$200</p>
+            </div>
+            <div id="total-card"
+                class="w-full p-4 bg-[#2E2532] rounded-lg flex flex-col justify-between items-center gap-4">
+                <h2 class="text-2xl font-extralight text-center">Total <br> Expenses</h2>
+                <p class="text-4xl">$800</p>
+            </div>
+            <div id="monthly-card"
+                class="w-full p-4 bg-[#5C3343] text-white rounded-lg flex flex-col justify-between items-center gap-4">
+                <h2 class="text-2xl font-extralight text-center">Expenses This <br> Month</h2>
+                <p class="text-4xl">$150</p>
+            </div>
+            <div id="daily-card"
+                class="w-full p-4 bg-[#7B2832] rounded-lg flex flex-col justify-between items-center gap-4">
+                <h2 class="text-2xl font-extralight text-center">Expenses <br> Today</h2>
+                <p class="text-4xl">$50</p>
+            </div>
+        </section>
+        <div class="grid md:grid-cols-2 grid-cols-1 w-full gap-4">
+            <section class="h-[calc(100vh-2rem)] overflow-y-auto no-scrollbar flex flex-col gap-4">
+                <div
+                    class="flex w-full lg:flex-row md:flex-col flex-col sm:flex-row justify-between lg:items-center sticky top-0 bg-[rgba(0,0,0,0.8)] backdrop-blur-sm p-2 px-4 rounded-lg">
+                    <h2 class="text-2xl font-extralight">History</h2>
+                    <div class="flex items-center gap-2">
+                        <select name="category" id="category-select"
+                            class="bg-[#151515] text-white border border-[#151515] rounded-lg p-2">
+                            <option value="all">Category</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="subscriptions">Subscriptions</option>
+                            <option value="bills">Bills</option>
+                            <option value="entertainment">Entertainment</option>
+                        </select>
+                        <select name="date" id="date-select"
+                            class="bg-[#151515] text-white border border-[#151515] rounded-lg p-2">
+                            <option value="all">Date Range</option>
+                            <option value="today">Today</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="w-full flex flex-col gap-4" id="history">
+                </div>
+            </section>
+            <section class="h-[calc(100vh-2rem)] no-scrollbar overflow-y-auto flex flex-col gap-4">
+                <h2 class="text-2xl font-extralight mb-4">Subscriptions</h2>
+                <div class="w-full flex flex-col gap-4" id="subscriptions">
+                    <div class="w-full flex justify-between items-center bg-[#151515] p-4 rounded-lg">
+                        <div class="flex gap-4 items-center">
+                            <span class="material-icons text-green-500">savings</span>
+                            <div class="flex flex-col">
+                                <p class="text-lg">Netflix</p>
+                                <p class="text-sm font-extralight">
+                                    Monthly subscription for Netflix
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <p class="text-sm">Due: 03-14-2025</p>
+                            <p class="text-lg">$10</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="fixed w-screen h-screen top-0 left-0 bg-[rgba(0,0,0,0.7)] backdrop-blur-sm flex justify-center items-center hidden"
+            id="modal">
+            <div class="w-[96%] max-w-[512px] bg-[#282828] p-4 rounded-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-extralight">Add Expense</h2>
+                    <span class="material-icons cursor-pointer" id="modal-close">close</span>
+                </div>
+                <form class="flex flex-col gap-4" id="form" method="post">
+                    <input type="text" name="name" id="name" placeholder="Name"
+                        class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    <input type="number" name="amount" id="amount" placeholder="Amount"
+                        class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    <input type="text" name="description" id="description" placeholder="Description"
+                        class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    <input type="text" name="to" id="to" placeholder="To"
+                        class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    <select name="category" id="category"
+                        class="bg-[#151515] text-white border border-[#151515] rounded-lg p-2">
+                        <option value="groceries">Groceries</option>
+                        <option value="subscriptions">Subscriptions</option>
+                        <option value="bills">Bills</option>
+                        <option value="entertainment">Entertainment</option>
+                    </select>
+                    <input type="date" name="date" id="date"
+                        class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    <div class="flex gap-2 items-center">
+                        <label for="recurring">Recurring</label>
+                        <input type="checkbox" name="recurring" id="recurring"
+                            class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
+                    </div>
+                    <button type="submit" class="bg-green-500 text-white p-2 rounded-lg">Save</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="./scripts/main.js"></script>
+</body>
+
+</html>
+
+<!-- 
+
+export interface IExpense {
+    id: number;
+    name: string;
+    amount: number;
+    category: ICategory;
+    date: string;
+    description: string;
+    to: string;
+    recurring: boolean;
+}
+
+export interface ICategory {
+    name: string;
+    icon: string;
+}
+
+-->
