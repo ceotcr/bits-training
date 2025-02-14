@@ -118,22 +118,22 @@
                     <span class="material-icons cursor-pointer" id="modal-close">close</span>
                 </div>
                 <form class="flex flex-col gap-4" id="form" method="post">
-                    <input type="text" name="name" id="name" placeholder="Name"
+                    <input type="text" required name="name" id="name" placeholder="Name"
                         class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
-                    <input type="number" name="amount" id="amount" placeholder="Amount"
+                    <input type="number" required name="amount" id="amount" placeholder="Amount"
                         class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
-                    <input type="text" name="description" id="description" placeholder="Description"
+                    <input type="text" required name="description" id="description" placeholder="Description"
                         class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
-                    <input type="text" name="to" id="to" placeholder="To"
+                    <input type="text" required name="to" id="to" placeholder="To"
                         class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
-                    <select name="category" id="category"
+                    <select name="category" required id="category"
                         class="bg-[#151515] text-white border border-[#151515] rounded-lg p-2">
                         <option value="groceries">Groceries</option>
                         <option value="subscriptions">Subscriptions</option>
                         <option value="bills">Bills</option>
                         <option value="entertainment">Entertainment</option>
                     </select>
-                    <input type="date" name="date" id="date"
+                    <input type="date" required name="date" id="date"
                         class="p-2 bg-[#151515] text-white border border-[#151515] rounded-lg">
                     <div class="flex gap-2 items-center">
                         <label for="recurring">Recurring</label>
