@@ -98,11 +98,15 @@
                     </div>
                 </div>
                 <div class="w-full flex flex-col gap-4" id="history">
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Start adding expenses to see them here</p>
                 </div>
             </section>
             <section class="h-[calc(100vh-2rem)] no-scrollbar overflow-y-auto flex flex-col gap-4">
                 <h2 class="text-2xl font-extralight mb-4">Subscriptions</h2>
                 <div class="w-full flex flex-col gap-4" id="subscriptions">
+                    <img src="./assets/empty.png" alt="Empty" class="w-full max-w-[240px] mx-auto" id="empty" />
+                    <p class="text-center" id="empty-text">Try recurring expenses</p>
                 </div>
             </section>
         </div>
@@ -140,28 +144,12 @@
                 </form>
             </div>
         </div>
+        <button
+            class="cursor-pointer p-4 bg-green-500 text-white rounded-full fixed bottom-4 right-4 z-10 material-icons"
+            id="add-expense">add
+        </button>
     </main>
     <script type="module" src="./scripts/main.js"></script>
 </body>
 
 </html>
-
-<!-- 
-
-export interface IExpense {
-    id: number;
-    name: string;
-    amount: number;
-    category: ICategory;
-    date: string;
-    description: string;
-    to: string;
-    recurring: boolean;
-}
-
-export interface ICategory {
-    name: string;
-    icon: string;
-}
-
--->

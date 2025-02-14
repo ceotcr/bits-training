@@ -70,10 +70,16 @@ const renderExpenses = () => {
     const date = dateSelect.value as "today" | "month" | "year" | "all"
     const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date)
     const historyContainer = document.getElementById("history") as HTMLDivElement
-    historyContainer.innerHTML = ""
     filteredExpenses.forEach(expense => {
         historyContainer.innerHTML += getExpenseCard(expense)
     })
+
+    if (filteredExpenses.length === 0) {
+        renderSubscriptions([])
+        return
+    }
+
+    historyContainer.innerHTML = ""
 
     const editButtons = document.querySelectorAll(".edit-expense")
 
@@ -161,6 +167,9 @@ const getOptions = () => {
 }
 
 const renderSubscriptions = (expenses: IExpense[]) => {
+    if (expenses.length === 0) {
+        return
+    }
     const subscriptionsContainer = document.getElementById("subscriptions") as HTMLDivElement
     subscriptionsContainer.innerHTML = ""
     expenses.forEach(expense => {

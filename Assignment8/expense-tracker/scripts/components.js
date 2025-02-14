@@ -40,21 +40,3 @@ export const getSubscriptionCard = (expense) => {
     </div>
     `;
 };
-/*
-sub
-<div class="w-full flex justify-between items-center bg-[#151515] p-4 rounded-lg">
-    <div class="flex gap-4 items-center">
-        <span class="material-icons text-green-500">savings</span>
-        <div class="flex flex-col">
-            <p class="text-lg">Netflix</p>
-            <p class="text-sm font-extralight">
-                Monthly subscription for Netflix
-            </p>
-        </div>
-    </div>
-    <div class="flex flex-col items-end">
-        <p class="text-sm">Due: 03-14-2025</p>
-        <p class="text-lg">$10</p>
-    </div>
-</div>
-*/ 

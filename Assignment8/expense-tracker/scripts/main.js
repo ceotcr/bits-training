@@ -60,10 +60,14 @@ const renderExpenses = () => {
     const date = dateSelect.value;
     const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date);
     const historyContainer = document.getElementById("history");
-    historyContainer.innerHTML = "";
     filteredExpenses.forEach(expense => {
         historyContainer.innerHTML += getExpenseCard(expense);
     });
+    if (filteredExpenses.length === 0) {
+        renderSubscriptions([]);
+        return;
+    }
+    historyContainer.innerHTML = "";
     const editButtons = document.querySelectorAll(".edit-expense");
     editButtons.forEach(button => {
         button.addEventListener("click", (e) => {
@@ -132,6 +136,9 @@ const getOptions = () => {
     });
 };
 const renderSubscriptions = (expenses) => {
+    if (expenses.length === 0) {
+        return;
+    }
     const subscriptionsContainer = document.getElementById("subscriptions");
     subscriptionsContainer.innerHTML = "";
     expenses.forEach(expense => {
