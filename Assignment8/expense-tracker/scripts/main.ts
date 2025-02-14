@@ -143,6 +143,7 @@ const renderExpenses = () => {
                     )
 
                     modal.classList.add("hidden")
+                    form.reset()
                     loadCards()
                     renderExpenses()
                 }

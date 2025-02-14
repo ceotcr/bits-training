@@ -115,6 +115,7 @@ const renderExpenses = () => {
                         recurring: recurringInput.checked
                     });
                     modal.classList.add("hidden");
+                    form.reset();
                     loadCards();
                     renderExpenses();
                 };
