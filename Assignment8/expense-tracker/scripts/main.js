@@ -5,7 +5,21 @@ const expenseTracker = new ExpenseTracker();
 const categories = new Categories();
 document.addEventListener("DOMContentLoaded", () => {
     const expenses = expenseTracker.getExpenses();
-    renderExpenses(expenses);
+    const categorySelect = document.getElementById("category-select");
+    categories.getCategories().forEach(category => {
+        const option = document.createElement("option");
+        option.value = category.name;
+        option.innerText = category.name;
+        categorySelect.appendChild(option);
+    });
+    categorySelect.addEventListener("change", (e) => {
+        renderExpenses();
+    });
+    const dateSelect = document.getElementById("date-select");
+    dateSelect.addEventListener("change", (e) => {
+        renderExpenses();
+    });
+    renderExpenses();
     loadCards();
 });
 const loadCards = () => {
@@ -39,10 +53,15 @@ const loadCards = () => {
     const dailyExpenses = document.querySelector("#daily-card p");
     dailyExpenses.innerText = `$${expenseTracker.dailyExpenses()}`;
 };
-const renderExpenses = (expenses) => {
+const renderExpenses = () => {
+    const categorySelect = document.getElementById("category-select");
+    const cat = categorySelect.value;
+    const dateSelect = document.getElementById("date-select");
+    const date = dateSelect.value;
+    const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date);
     const historyContainer = document.getElementById("history");
     historyContainer.innerHTML = "";
-    expenses.forEach(expense => {
+    filteredExpenses.forEach(expense => {
         historyContainer.innerHTML += getExpenseCard(expense);
     });
     const editButtons = document.querySelectorAll(".edit-expense");
@@ -86,7 +105,7 @@ const renderExpenses = (expenses) => {
                     });
                     modal.classList.add("hidden");
                     loadCards();
-                    renderExpenses(expenseTracker.getExpenses());
+                    renderExpenses();
                 };
             }
         });
@@ -97,10 +116,10 @@ const renderExpenses = (expenses) => {
             const id = parseInt(e.target.dataset.id);
             expenseTracker.deleteExpense(id);
             loadCards();
-            renderExpenses(expenseTracker.getExpenses());
+            renderExpenses();
         });
     });
-    renderSubscriptions(expenses.filter(expense => expense.recurring));
+    renderSubscriptions(filteredExpenses.filter(expense => expense.recurring));
 };
 const getOptions = () => {
     const select = document.getElementById("category");

@@ -92,6 +92,27 @@ class ExpenseTracker {
         }
     }
 
+    getFilteredExpenses(category: string, range: "today" | "month" | "year" | "all"): IExpense[] {
+        return this.expenses.filter(expense => {
+            if (category !== "All") {
+                return expense.category.name === category;
+            }
+            return true;
+        }).filter(expense => {
+            const now = new Date();
+            switch (range) {
+                case "today":
+                    return new Date(expense.date).getDate() === now.getDate();
+                case "month":
+                    return new Date(expense.date).getMonth() === now.getMonth();
+                case "year":
+                    return new Date(expense.date).getFullYear() === now.getFullYear();
+                case "all":
+                    return true;
+            }
+        });
+    }
+
     getExpense(id: number): IExpense | undefined {
         return this.expenses.find(expense => expense.id === id);
     }

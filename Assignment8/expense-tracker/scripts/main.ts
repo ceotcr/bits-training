@@ -7,7 +7,21 @@ const expenseTracker = new ExpenseTracker()
 const categories = new Categories()
 document.addEventListener("DOMContentLoaded", () => {
     const expenses = expenseTracker.getExpenses()
-    renderExpenses(expenses)
+    const categorySelect = document.getElementById("category-select") as HTMLSelectElement
+    categories.getCategories().forEach(category => {
+        const option = document.createElement("option")
+        option.value = category.name
+        option.innerText = category.name
+        categorySelect.appendChild(option)
+    })
+    categorySelect.addEventListener("change", (e) => {
+        renderExpenses()
+    })
+    const dateSelect = document.getElementById("date-select") as HTMLSelectElement
+    dateSelect.addEventListener("change", (e) => {
+        renderExpenses()
+    })
+    renderExpenses()
     loadCards()
 })
 
@@ -49,10 +63,15 @@ const loadCards = () => {
     const dailyExpenses = document.querySelector("#daily-card p") as HTMLParagraphElement
     dailyExpenses.innerText = `$${expenseTracker.dailyExpenses()}`
 }
-const renderExpenses = (expenses: IExpense[]) => {
+const renderExpenses = () => {
+    const categorySelect = document.getElementById("category-select") as HTMLSelectElement
+    const cat = categorySelect.value
+    const dateSelect = document.getElementById("date-select") as HTMLSelectElement
+    const date = dateSelect.value as "today" | "month" | "year" | "all"
+    const filteredExpenses = expenseTracker.getFilteredExpenses(cat, date)
     const historyContainer = document.getElementById("history") as HTMLDivElement
     historyContainer.innerHTML = ""
-    expenses.forEach(expense => {
+    filteredExpenses.forEach(expense => {
         historyContainer.innerHTML += getExpenseCard(expense)
     })
 
@@ -111,7 +130,7 @@ const renderExpenses = (expenses: IExpense[]) => {
 
                     modal.classList.add("hidden")
                     loadCards()
-                    renderExpenses(expenseTracker.getExpenses())
+                    renderExpenses()
                 }
             }
         })
@@ -123,10 +142,10 @@ const renderExpenses = (expenses: IExpense[]) => {
             const id = parseInt((e.target as HTMLElement).dataset.id as string)
             expenseTracker.deleteExpense(id)
             loadCards()
-            renderExpenses(expenseTracker.getExpenses())
+            renderExpenses()
         })
     })
-    renderSubscriptions(expenses.filter(expense => expense.recurring))
+    renderSubscriptions(filteredExpenses.filter(expense => expense.recurring))
 }
 
 
