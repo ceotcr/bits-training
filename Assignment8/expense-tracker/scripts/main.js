@@ -1,5 +1,5 @@
 import { Categories } from "./Categories.js";
-import { getExpenseCard } from "./components.js";
+import { getExpenseCard, getSubscriptionCard } from "./components.js";
 import { ExpenseTracker } from "./Expense.js";
 const expenseTracker = new ExpenseTracker();
 const categories = new Categories();
@@ -91,6 +91,16 @@ const renderExpenses = (expenses) => {
             }
         });
     });
+    const deleteButtons = document.querySelectorAll(".delete-expense");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const id = parseInt(e.target.dataset.id);
+            expenseTracker.deleteExpense(id);
+            loadCards();
+            renderExpenses(expenseTracker.getExpenses());
+        });
+    });
+    renderSubscriptions(expenses.filter(expense => expense.recurring));
 };
 const getOptions = () => {
     const select = document.getElementById("category");
@@ -100,5 +110,12 @@ const getOptions = () => {
         option.value = category.name;
         option.innerText = category.name;
         select.appendChild(option);
+    });
+};
+const renderSubscriptions = (expenses) => {
+    const subscriptionsContainer = document.getElementById("subscriptions");
+    subscriptionsContainer.innerHTML = "";
+    expenses.forEach(expense => {
+        subscriptionsContainer.innerHTML += getSubscriptionCard(expense);
     });
 };
