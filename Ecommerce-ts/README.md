@@ -1,11 +1,10 @@
-# Ecommerce Project
+# Ecommerce TS Project
 
 ## Opulenze - Indulge in Elegance
 
-Used Tailwind CSS, Vanilla JS, [fakestoreapi.com](http://fakestoreapi.com) API
+Used Tailwind CSS, TypeScript, [fakestoreapi.com](http://fakestoreapi.com) API
 
-## Main User
-  https://github.com/user-attachments/assets/1f738d23-1ecc-4079-8a23-aa831fe2031b
-  
-## Admin Panel - 
-[ecom-admin.webm](https://github.com/user-attachments/assets/0736d259-0b4b-46da-8a43-c65d20b2f948)
+
+
+https://github.com/user-attachments/assets/82d34019-3691-45f4-a4d7-39299a7e3dfa
+
