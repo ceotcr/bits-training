@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Login | Opulenze
+    </title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <header class="sticky top-0 z-50 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
+        <div class="w-full mx-auto max-w-[1440px] p-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-x-2">
+                    <h1 class="text-2xl font-semibold text-gray-900">Opulenze</h1>
+                </a>
+                <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
+                    <a href="../" class="text-sm font-medium text-gray-900">Home</a>
+                    <a href="../products/" class="text-sm font-medium text-gray-900">Products</a>
+                    <a href="../admin/" id="admin" class="text-sm font-medium text-gray-900">Admin</a>
+                    <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
+                    <a href="../login/" id="login"
+                        class="text-sm underline underline-offset-4 cursor-pointer font-medium text-gray-900">Signin</a>
+                </nav>
+                <div class="flex items-center gap-x-6">
+                    <a href="#" class="flex items-center gap-x-6 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-900 text-2xl cursor-pointer">shopping_bag</span>
+                        <span
+                            class="absolute -top-3 -right-3 w-6 h-6 inline-flex items-center justify-center text-xs font-semibold leading-none text-black bg-green-400 rounded-full"
+                            id="cart-badge"></span>
+                    </a>
+
+                    <button id="mob-nav-toggler"
+                        class="md:hidden cursor-pointer flex items-center justify-center w-10 h-10 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        aria-label="Toggle Menu">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="p-6 w-full">
+        <div
+            class="w-full mx-auto max-w-[1440px] items-center justify-center gap-4 min-h-[calc(100vh-10rem)] gap-4 h-fit flex flex-col">
+
+            <h1 class="text-2xl text-center font-semibold text-gray-900 w-fit mx-auto">
+                <i class="text-[#DA9100]">
+                    Opulenze
+                </i><br>
+                Shop faster, Shop Smarter
+            </h1>
+
+            <div class="w-full max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+                <h2 class="text-2xl font-semibold text-gray-900">Login</h2>
+                <div class="mt-4">
+                    <div class="mb-4">
+                        <label for="username" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="text" id="username" name="username" autocomplete="username"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="current-password"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <button id="form-submit"
+                            class="cursor-pointer w-full px-3 py-2 text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button
+        class="p-4 bg-black text-white material-symbols-outlined mr-auto cursor-pointer fixed bottom-4 right-4 outline-2 outline-white"
+        id="back-to-top-button">
+        arrow_upward
+    </button>
+    <footer class="bg-black text-white">
+        <div class="w-full mx-auto max-w-[1440px] p-6">
+            <nav>
+                <ul class="flex items-center justify-center gap-x-6">
+                    <li><a href="../" class="text-lg font-medium">Home</a></li>
+                    <li><a href="..products/" class="text-lg font-medium">Products</a></li>
+                </ul>
+            </nav>
+            <div class="mt-4 text-center">
+                <p class="text-sm font-medium">© <span id="footer-year">2025</span> Opulenze. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
+        Snackbar
+    </div>
+    <script src="../scripts/login.js" type="module"></script>
+    <script src="../scripts/common.js" type="module"></script>
+</body>
+
+</html>

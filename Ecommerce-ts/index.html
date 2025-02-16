@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Opulenze - Indulge in Elegance
+    </title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header class="sticky top-0 z-50 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
+        <div class="w-full mx-auto max-w-[1440px] p-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-x-2">
+                    <h1 class="text-2xl font-semibold text-gray-900">Opulenze</h1>
+                </a>
+                <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
+                    <a href="#" class="text-sm font-medium text-gray-900 underline underline-offset-4">Home</a>
+                    <a href="./products/" class="text-sm font-medium text-gray-900">Products</a>
+                    <a href="./admin/" id="admin" class="text-sm font-medium text-gray-900">Admin</a>
+                    <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
+
+                    <a href="./login/" id="login" class="text-sm cursor-pointer font-medium text-gray-900">Signin</a>
+
+                </nav>
+                <div class="flex items-center gap-x-6">
+                    <a href="./cart/" class="flex items-center gap-x-6 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-900 text-2xl cursor-pointer">shopping_bag</span>
+                        <span
+                            class="absolute -top-3 -right-3 w-6 h-6 inline-flex items-center justify-center text-xs font-semibold leading-none text-black bg-green-400 rounded-full"
+                            id="cart-badge"></span>
+                    </a>
+                    <button id="mob-nav-toggler"
+                        class="md:hidden cursor-pointer flex items-center justify-center w-10 h-10 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        aria-label="Toggle Menu">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="relative isolate px-6 pt-14 lg:px-8 w-full">
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+
+        <div
+            class="w-full mx-auto max-w-[1440px] grid grid-cols-1 gap-y-16 items-center md:grid-cols-2 md:gap-x-8 lg:gap-x-16">
+            <div class="">
+                <div class="text-left max-md:text-center">
+                    <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
+                        <i class="text-[#281C02]">Opulenze</i> <br>
+                        Indulge in
+                        <i class="text-[#DA9100]">Elegance</i>.
+                    </h1>
+                    <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">Discover a curated
+                        collection
+                        of exquisite products, crafted for those who appreciate the finest things in life.</p>
+                    <div class="mt-10 flex items-center md:justify-start justify-center gap-x-6">
+                        <a href="./products/"
+                            class="rounded-md bg-[#281C02] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:opacity-90 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Explore
+                            Products</a>
+                    </div>
+                </div>
+            </div>
+            <img src="./assets/hero.jpg" alt="luxury items"
+                class="w-full h-full object-cover object-right md:max-h-[720px] max-h-[360px] rounded-lg">
+        </div>
+
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+
+    </section>
+    <section class="px-6 py-16 lg:px-8 w-full">
+        <div class="w-full mx-auto max-w-[1440px] items-center gap-4">
+            <div class="text-center w-full">
+                <h2 class="text-4xl max-md:text-3xl mx-auto font-semibold text-gray-900">
+                    <i class="text-[#DA9100]">Luxury</i> Segments
+                </h2>
+                <div class="">
+                    <div class="grid sm:grid-cols-2 grid-cols-1 w-full items-center gap-4 mt-8" id="categories">
+                        <div class="col-span-full gap-4 flex flex-col items-center justify-center pt-20">
+                            <img src="./assets/loading.gif"
+                                class="w-full max-w-[240px] rounded-full mix-blend-multiply h-full mx-auto"
+                                alt="Loading">
+                            <p class="text-3xl">Curating Categories...</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <section class="p-6 w-full">
+        <div class="w-full mx-auto max-w-[1440px] items-center gap-4">
+            <div class="text-center w-full">
+                <h2 class="text-4xl max-md:text-3xl mx-auto font-semibold text-gray-900">
+                    Pinnacle of <i class="text-[#DA9100]">Perfection</i>
+                </h2>
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
+                    id="featured-products">
+
+
+                    <div class="col-span-full gap-4 flex flex-col items-center justify-center pt-20">
+                        <img src="./assets/loading.gif"
+                            class="w-full max-w-[240px] rounded-full mix-blend-multiply h-full mx-auto" alt="Loading">
+                        <p class="text-3xl">Curating Best Products For You...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><button
+        class="p-4 bg-black text-white material-symbols-outlined mr-auto cursor-pointer fixed bottom-4 right-4 outline-2 outline-white"
+        id="back-to-top-button">
+        arrow_upward
+    </button>
+    <footer class="bg-black text-white">
+        <div class="w-full mx-auto max-w-[1440px] p-6">
+            <nav>
+                <ul class="flex items-center justify-center gap-x-6">
+                    <li><a href="#" class="text-lg font-medium">Home</a></li>
+                    <li><a href="#" class="text-lg font-medium">Products</a></li>
+                </ul>
+            </nav>
+            <div class="mt-4 text-center">
+                <p class="text-sm font-medium">© <span id="footer-year">2025</span> Opulenze. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
+        Snackbar
+    </div>
+    <script src="./scripts/common.js" type="module"></script>
+    <script src="./scripts/home.js" type="module"></script>
+</body>
+
+</html>

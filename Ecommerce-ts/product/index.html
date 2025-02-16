@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Opulenze - Indulge in Elegance
+    </title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <header class="sticky top-0 z-50 bg-[rgba(255,255,255,0.6)] backdrop-blur-lg">
+        <div class="w-full mx-auto max-w-[1440px] p-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-x-2">
+                    <h1 class="text-2xl font-semibold text-gray-900">Opulenze</h1>
+                </a>
+                <nav id="mob-nav" class="hidden md:flex items-center gap-x-6 mx-auto">
+                    <a href="../" class="text-sm font-medium text-gray-900">Home</a>
+                    <a href="../products/" class="text-sm font-medium text-gray-900">Products</a>
+                    <a href="../admin/" id="admin" class="text-sm font-medium text-gray-900">Admin</a>
+                    <button id="logout" class="text-sm cursor-pointer font-medium text-gray-900">Logout</button>
+
+                    <a href="../login/" id="login" class="text-sm cursor-pointer font-medium text-gray-900">Signin</a>
+
+                </nav>
+                <div class="flex items-center gap-x-6">
+                    <a href="../cart/" class="flex items-center gap-x-6 relative">
+                        <span
+                            class="material-symbols-outlined text-gray-900 text-2xl cursor-pointer">shopping_bag</span>
+                        <span
+                            class="absolute -top-3 -right-3 w-6 h-6 inline-flex items-center justify-center text-xs font-semibold leading-none text-black bg-green-400 rounded-full"
+                            id="cart-badge"></span>
+                    </a>
+
+                    <button id="mob-nav-toggler"
+                        class="md:hidden cursor-pointer flex items-center justify-center w-10 h-10 text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        aria-label="Toggle Menu">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="p-6 w-full">
+        <div
+            class="w-full mx-auto max-w-[1440px] justify-center items-center flex flex-col gap-4 min-h-[calc(100vh-160px)]">
+            <button class="p-4 bg-black text-white material-symbols-outlined mr-auto cursor-pointer" id="back-button">
+                arrow_back
+            </button>
+            <div id="loading">
+                <img src="../assets/loading.gif"
+                    class="w-full max-w-[240px] rounded-full mix-blend-multiply h-full mx-auto" alt="Loading">
+            </div>
+            <div id="main-product-container"
+                class="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 hidden lg:gap-8">
+                <img id="image" src="../assets/categories/jewelery.jpg"
+                    class="w-full max-h-[512px] object-top object-cover rounded-md" alt="Jewelery">
+                <div class="w-full flex flex-col gap-4">
+                    <h2 id="title" class="lg:text-5xl md:text-3xl sm:text-4xl text-3xl font-semibold text-gray-900">
+                        Fjallraven -
+                        Foldsack No. 1 Backpack, Fits 15
+                        Laptops
+                    </h2>
+                    <a href="/Ecommerce/products/?category=" id="category" class="flex items-center gap-2">
+                        Men's Clothing
+                    </a>
+                    <div id="rating" class="flex items-center gap-2">
+                    </div>
+                    <p class="text-lg font-medium text-gray-900" id="price">$109.95</p>
+                    <p class="text-gray-700"><b>About this item:</b><br />
+                        <span id="description">
+                            Your perfect pack for everyday use and walks
+                            in the
+                            forest. Stash your
+                            laptop (up to 15 inches) in the padded sleeve, your everyday
+                        </span>
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="px-4 add-to-cart py-2 bg-gray-900 text-white w-full cursor-pointer rounded-md">Add to
+                            Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button
+        class="p-4 bg-black text-white material-symbols-outlined mr-auto cursor-pointer fixed bottom-4 right-4 outline-2 outline-white"
+        id="back-to-top-button">
+        arrow_upward
+    </button>
+    <footer class="bg-black text-white">
+        <div class="w-full mx-auto max-w-[1440px] p-6">
+            <nav>
+                <ul class="flex items-center justify-center gap-x-6">
+                    <li><a href="../" class="text-lg font-medium">Home</a></li>
+                    <li><a href="..products/" class="text-lg font-medium">Products</a></li>
+                </ul>
+            </nav>
+            <div class="mt-4 text-center">
+                <p class="text-sm font-medium">© <span id="footer-year">2025</span> Opulenze. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div id="snackbar" class="p-4 fixed bottom-4 hidden left-4 bg-black text-white shadow-2xl">
+        Snackbar
+    </div>
+    <script src="../scripts/common.js" type="module"></script>
+    <script src="../scripts/productPage.js" type="module"></script>
+</body>
+
+</html>
